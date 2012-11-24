@@ -1,0 +1,34 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div#post-show{
+  margin-bottom: 20px;  
+}
+
+h1 {
+}
+
+table#post-header{
+  width: 100%;
+}
+
+table#post-header td:first-child{
+  text-align: left;
+}
+
+table#post-header td:last-child{
+  text-align: right;
+}
+
+table#post-show-header{
+  width: 100%;
+}
+
+table#post-show-header td:first-child{
+  text-align: left;
+}
+
+table#post-show-header td:last-child{
+  text-align: right;
+}

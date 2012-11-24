@@ -1,0 +1,23 @@
+<% @posts.each do |post| %>
+  <div class="post">
+    <table id="post-header">
+      <tr>
+        <td>
+          <h1 class="post-title"><%= link_to post.title, post_path(post) %></h1>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_post_path(post) %>
+        </td>
+      </tr>
+    </table>
+    <p class="post-content">
+      <%= limited_post_content(post.content) %>
+      <%= link_to "(read more)", post_path(post) %>
+    </p>
+    <p class="links">
+      <%= link_to "Read More", post_path(post), :class => 'more' %> &nbsp;&nbsp;&nbsp; 
+      <%= link_to_post(post) %>
+    </p>
+  </div>
+<% end %>
+

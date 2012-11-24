@@ -1,0 +1,45 @@
+<div id="post-show">
+  <table id="post-show-header">
+    <tr>
+      <td>
+        <h1><%= @post.title %></h1>
+      </td>
+      <td><%= link_to "Edit", edit_post_path(@post) %></td>
+    </tr>
+  </table>
+  
+
+  <h4>Content:</h4>
+  <%= @post.content %>
+
+  <h4>Created at:</h4>
+  <%= @post.created_at %>
+
+  <h4>Updated at:</h4>
+  <%= @post.updated_at %>
+</div>
+
+<%= link_to "Add comment", "#", :id => "add_comment", :remote => true %>
+
+<div id="add_comment" class="visible">
+  <%= form_for([@post, @post.comments.build]) do |f| %>
+    <%= f.label :content %><br/>
+    <%= f.text_area :content, :size => "60x6" %>
+    
+    <%= f.submit %>
+  <% end %>
+</div>
+
+<br/><br/>
+
+<div id="comments">
+  <% if @post.comments.present? %>
+    <% Rails.logger.info "=========== #{@post.comments.inspect}" %>
+    <% @post.comments.each do |comment| %>
+      <div class="comment">
+        <%= comment.content %>
+        <p>Commented at: <%= comment.created_at %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div> 
