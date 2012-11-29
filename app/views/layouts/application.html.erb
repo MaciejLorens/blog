@@ -15,6 +15,16 @@
       <h1><a href="#">Blog Samuela</a></h1>
       <p><span>by M. L.</span></p>
     </div>
+    
+    <div id="login">
+      <% if user_signed_in? %>
+        <%= current_user.email %>
+        <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to "Sing in", new_user_session_path %> or <%= link_to "Sing up", new_user_registration_path %>
+      <% end %>
+    </div>
+    
     <div id="search">
       <form id="searchform" method="get" action="">
         <fieldset>
@@ -27,23 +37,31 @@
   
   <div id="menu">
     <ul>
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Blog", posts_path %></li>
-      <li><%= link_to "Hobby", hobby_path %></li>
-      <li><%= link_to "Ruby on Rails", ruby_on_rails_path %></li>
-      <li><%= link_to "Portfolio", portfolio_path %></li>
-      <li><%= link_to "Contact", contact_path %></li>
+      <% Taxon.taxonomies.ordered.each do |taxon| %>
+        <li><%= link_to taxon.name, taxon.permalink %></li>
+      <% end %>
     </ul>
   </div>
   
   <div id="page">
     
     <div id="content">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      
       <%= yield %>
     </div>
 
     <div id="sidebar">
-      <%= render :partial => "shared/sidebar" %>
+      <ul id="categories">
+        <li><%= link_to "New Post", new_post_path if current_user && current_user.is_admin? %></li>
+        <% if @taxons.present? && !@taxons.empty? %>
+          <% @taxons.each do |taxon| %>
+            <li><%= link_to taxon.name, taxon.parent.permalink + taxon.permalink %></li>
+          <% end %>
+        <% end %>
+      </ul>
+      <%= yield(:sidebar) %>
     </div>
 
   </div>

@@ -1,5 +1,7 @@
 Blog::Application.routes.draw do
 
+  devise_for :users
+
   get "comments/index"
   get "comments/edit"
   get "comments/show"
