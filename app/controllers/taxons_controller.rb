@@ -46,9 +46,4 @@ class TaxonsController < ApplicationController
       redirect_to :action => 'index', :notice => "Error occurred when deleting taxon. Try again later."
     end
   end
-
-  protected
-  def check_access
-    redirect_to root_path unless current_user && current_user.is_admin?
-  end
 end

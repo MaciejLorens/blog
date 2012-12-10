@@ -1,0 +1,19 @@
+<h1>List of users:</h1>
+
+<table>
+  <tr>
+    <td>id</td>
+    <td>email</td>
+    <td>avatar</td>
+    <td>actions</td>
+  </tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.email %></td>
+    <td><%= image_tag user.avatar.url(:thumb) %></td>
+    <td><%= link_to "Edit", "#" %></td>
+    <td><%= link_to "Delete", "#" %></td>
+  </tr>
+<% end %>
+</table>

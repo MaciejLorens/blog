@@ -16,6 +16,7 @@ Blog::Application.routes.draw do
   end
   
   resources :taxons
+  resources :users
   
 
   # The priority is based upon order of creation:
