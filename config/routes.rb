@@ -2,6 +2,7 @@ Blog::Application.routes.draw do
 
   devise_for :users
 
+  get "home/index"
   get "comments/index"
   get "comments/edit"
   get "comments/show"
@@ -14,7 +15,8 @@ Blog::Application.routes.draw do
     resources :comments
   end
   
-  get "home/index"
+  resources :taxons
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

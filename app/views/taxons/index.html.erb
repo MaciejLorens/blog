@@ -1,0 +1,39 @@
+<div>  
+  <table>
+    <tr>
+      <td>
+        <h1>Taxon#index</h1>
+      </td>
+       <td style="text-align: right;">
+         <%= link_to "New Taxon", new_taxon_path, :class => 'new_item_button' %>
+       </td>
+    </tr>
+  </table>
+  <% if @taxons.present? %>
+    <table id="taxon_table">
+      <tr>
+        <th>id</th>
+        <th>parent_id</th>
+        <th>name</th>
+        <th>permalink</th>
+        <th>description</th>
+        <th>action links</th>
+      </tr>
+      <% @taxons.each do |taxon| %>
+        <tr class="<%= cycle('odd', 'even') %>">
+          <td><%= taxon.id %></td>
+          <td><%= taxon.parent_id %></td>
+          <td><%= taxon.name %></td>
+          <td><%= taxon.permalink %></td>
+          <td><%= taxon.description %></td>
+          <td><%= link_to "Edit", edit_taxon_path(taxon) %></td>
+          <td><%= link_to "Delete", taxon_path(taxon), :method => :delete %></td>
+        </tr>
+      <% end %>
+    </table>
+    
+  <% else %>
+    No taxon yet ...
+  <% end %>
+</div>
+  

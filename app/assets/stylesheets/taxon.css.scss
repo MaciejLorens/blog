@@ -1,0 +1,30 @@
+// Place all the styles related to the Taxon controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#taxon_table {
+  text-align: left;
+  width: 100%;
+}
+
+#taxon_table td{
+  padding: 3px 5px 3px 5px;
+  border: 1px solid black;
+}
+
+#taxon_table th{
+  background-color: black;
+}
+
+#taxon_table a{
+  color: black;
+}
+
+#taxon_table .odd{
+  background-color: #9c9c9c;
+}
+
+#taxon_table .even{
+  background-color: grey;
+}
+

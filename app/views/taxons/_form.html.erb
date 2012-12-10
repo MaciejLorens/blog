@@ -1,0 +1,17 @@
+<%= form_for(@taxon) do |f|%>
+  <div class="form_field">
+    <%= f.label :parent_id %>:<br/>
+    <%#= f.select :parent_id, options_for_select((1..10)) %>
+    <%= f.select :parent_id, options_for_select(Taxon.all.collect{|t| [t.name, t.id]}.insert(0, ["No parent", nil]), :select => @taxon.parent_id) %>
+  </div>
+  <div class="form_field">
+    <%= f.label :name %>:<br/>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form_field">
+    <%= f.label :permalink %>:<br/>
+    <%= f.text_field :permalink %>
+  </div>
+  
+  <%= f.submit %>
+<% end %>
